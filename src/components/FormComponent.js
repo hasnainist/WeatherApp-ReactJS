@@ -1,6 +1,7 @@
 import {React, useState} from 'react';
 import { Button, Form, FormGroup, Input, Col ,Row, CardImg, Card} from 'reactstrap';
 import Weather from './Weather';
+import {Stagger,Fade} from 'react-animation-components'
 
  function FormComponent (props) {
 
@@ -54,7 +55,14 @@ import Weather from './Weather';
   }
   else{
     return(
+      <Stagger  in
+      transformProps={{
+          exitTransform: 'scale(0.5) translateY(-50%)'
+      }}>
+          <Fade in>
     <Weather lon={longitude} lat={latitude} home={props.back}/>
+    </Fade>
+    </Stagger>
     );
   }
 

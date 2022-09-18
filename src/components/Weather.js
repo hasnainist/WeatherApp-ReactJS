@@ -1,6 +1,6 @@
 import { Component } from "react";
 import { Form, Button, Card, CardImg, CardBody, Row } from 'reactstrap';
-import {Stagger} from 'react-animation-components'
+import {Stagger,Fade} from 'react-animation-components'
 
 
 class Weather extends Component {
@@ -190,7 +190,7 @@ class Weather extends Component {
 
                                             <p className="fs-1">...</p>
                                             <hr size="5" width="90%" color="white" className="mx-auto" />
-
+                                
                                             <Row className="align-items-center mb-4">
                                                 <p className="fw-light fs-4">...</p>
                                             </Row>
@@ -245,7 +245,7 @@ class Weather extends Component {
 
 
                                             </Row>
-
+                                         
 
 
 
