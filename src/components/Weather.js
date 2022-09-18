@@ -1,6 +1,6 @@
 import { Component } from "react";
 import { Form, Button, Card, CardImg, CardBody, Row } from 'reactstrap';
-
+import {Stagger} from 'react-animation-components'
 
 
 class Weather extends Component {
@@ -10,7 +10,8 @@ class Weather extends Component {
 
         this.state = {
             data: {},
-            render: false
+            render: false,
+            ok:true
         }
     }
 
@@ -24,9 +25,15 @@ class Weather extends Component {
 
                 this.setState({ data: result });
                 this.setState({ render: true });
+               if(result.cod==='400')
+               {
 
+                this.setState({ok:false})
+                
+               }
 
-            });
+            })
+        
     }
 
 
@@ -42,7 +49,8 @@ class Weather extends Component {
             this.props.home();
         }
 
-
+       
+        if(this.state.ok){
         if (this.state.render) {
             const source="./imgs/"+this.state.data.weather[0].main+".png";
 
@@ -69,7 +77,7 @@ class Weather extends Component {
                                             <CardBody className="text-white">
 
 
-
+                                               
                                                 <p className="fs-1">{this.state.data.name} , {this.state.data.sys.country}</p>
                                                 <hr size="5" width="90%" color="white" className="mx-auto" />
 
@@ -79,11 +87,11 @@ class Weather extends Component {
 
                                                 <Row>
 
-                                                    <div className="col-4 ms-auto">
+                                                    <div className="col-5 ms-auto">
                                                         <p className="fw-light fs-6">temp | {this.state.data.main.temp} K</p>
                                                     </div>
 
-                                                    <div className="col-4 me-auto">
+                                                    <div className="col-5 me-auto">
                                                         <p className="fw-light">feels like | {this.state.data.main.feels_like} K</p>
                                                     </div>
                                                 </Row>
@@ -92,11 +100,11 @@ class Weather extends Component {
 
                                                 <Row>
 
-                                                    <div className="col-4 ms-auto">
+                                                    <div className="col-5 ms-auto">
                                                         <p className="fw-light">min | {this.state.data.main.temp_min} K</p>
                                                     </div>
 
-                                                    <div className="col-4 me-auto">
+                                                    <div className="col-5 me-auto">
                                                         <p className="fw-light">max | {this.state.data.main.temp_max} K</p>
                                                     </div>
 
@@ -105,10 +113,10 @@ class Weather extends Component {
 
                                                 <Row>
 
-                                                    <div className="col-4 ms-auto">
+                                                    <div className="col-5 ms-auto">
                                                         <p className="fw-light">desc | {this.state.data.weather[0].description}</p>
                                                     </div>
-                                                    <div className="col-4 me-auto">
+                                                    <div className="col-5 me-auto">
                                                         <p className="fw-light">humidity | {this.state.data.main.humidity} %</p>
                                                     </div>
 
@@ -117,18 +125,18 @@ class Weather extends Component {
 
                                                 <Row>
 
-                                                    <div className="col-4 ms-auto">
+                                                    <div className="col-5 ms-auto">
                                                         <p className="fw-light">pressure | {this.state.data.main.pressure} hPa</p>
                                                     </div>
-                                                    <div className="col-4 me-auto">
+                                                    <div className="col-5 me-auto">
                                                         <p className="fw-light">wind speed | {this.state.data.wind.speed} km/h</p>
 
                                                     </div>
 
 
                                                 </Row>
-
-
+                                               
+                                            
 
 
 
@@ -167,7 +175,7 @@ class Weather extends Component {
                             <div className="col-md-3">
                                 <Card className="border-0">
 
-                                    <CardImg src='./imgs/cloudy.png' width="100px" alt="weather app logo" className='border-0 bg-dark' />
+                                    <CardImg src='./imgs/loading.png' width="100px" alt="weather app logo" className='border-0 bg-dark' />
 
                                 </Card>
                             </div>
@@ -180,21 +188,21 @@ class Weather extends Component {
 
 
 
-                                            <p className="fs-1">Name , Cn</p>
+                                            <p className="fs-1">...</p>
                                             <hr size="5" width="90%" color="white" className="mx-auto" />
 
                                             <Row className="align-items-center mb-4">
-                                                <p className="fw-light fs-4">Clouds</p>
+                                                <p className="fw-light fs-4">...</p>
                                             </Row>
 
                                             <Row>
 
-                                                <div className="col-4 ms-auto">
-                                                    <p className="fw-light fs-6">temp | 0 K</p>
+                                                <div className="col-5 ms-auto">
+                                                    <p className="fw-light fs-6">...</p>
                                                 </div>
 
-                                                <div className="col-4 me-auto">
-                                                    <p className="fw-light">feels like | 0 K</p>
+                                                <div className="col-5 me-auto">
+                                                    <p className="fw-light">...</p>
                                                 </div>
                                             </Row>
 
@@ -202,12 +210,12 @@ class Weather extends Component {
 
                                             <Row>
 
-                                                <div className="col-4 ms-auto">
-                                                    <p className="fw-light">min | 0 K</p>
+                                                <div className="col-5 ms-auto">
+                                                    <p className="fw-light">...</p>
                                                 </div>
 
-                                                <div className="col-4 me-auto">
-                                                    <p className="fw-light">max | 0 K</p>
+                                                <div className="col-5 me-auto">
+                                                    <p className="fw-light">...</p>
                                                 </div>
 
 
@@ -215,11 +223,11 @@ class Weather extends Component {
 
                                             <Row>
 
-                                                <div className="col-4 ms-auto">
-                                                    <p className="fw-light">desc | broken clouds</p>
+                                                <div className="col-5 ms-auto">
+                                                    <p className="fw-light">...</p>
                                                 </div>
-                                                <div className="col-4 me-auto">
-                                                    <p className="fw-light">humidity | 0 %</p>
+                                                <div className="col-5 me-auto">
+                                                    <p className="fw-light">...</p>
                                                 </div>
 
                                             </Row>
@@ -227,11 +235,11 @@ class Weather extends Component {
 
                                             <Row>
 
-                                                <div className="col-4 ms-auto">
-                                                    <p className="fw-light">pressure | 0 hPa</p>
+                                                <div className="col-5 ms-auto">
+                                                    <p className="fw-light">...</p>
                                                 </div>
-                                                <div className="col-4 me-auto">
-                                                    <p className="fw-light">wind speed | 0 km/h</p>
+                                                <div className="col-5 me-auto">
+                                                    <p className="fw-light">...</p>
 
                                                 </div>
 
@@ -250,7 +258,7 @@ class Weather extends Component {
                             </div>
 
 
-                            <Form onSubmit={backtoHome}><Button type="submit">Home</Button></Form>
+                            <Button type="submit">Home</Button>
 
                         </div>
 
@@ -264,6 +272,21 @@ class Weather extends Component {
             );
 
         }
+    }
+    else
+    {
+        return (
+        <div >
+        <div className="container vh-100 align-items-center">
+        <div className="m-5 p-5">
+        <h1 className="m-5 pt-5 font-monospace ">{this.state.data.message} :&#40; </h1>
+        <Form onSubmit={backtoHome}><Button type="submit">Home</Button></Form>
+        </div>
+        </div>
+        </div>
+        )
+    }
+    
     }
     
 
