@@ -1,4 +1,4 @@
-[website ui](screencapture-localhost-3000-home-2022-12-31-01_28_08.png)
+![website ui](screencapture-localhost-3000-home-2022-12-31-01_28_08.png)
 
 # Getting Started with Create React App
 
